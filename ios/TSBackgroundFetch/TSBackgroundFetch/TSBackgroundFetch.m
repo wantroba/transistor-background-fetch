@@ -16,6 +16,8 @@ static NSString *const TRANSISTOR_IDENTIFIER_PREFIX = @"com.transistorsoft";
 static NSString *const BACKGROUND_REFRESH_TASK_ID   = @"com.transistorsoft.fetch";
 static NSString *const PERMITTED_IDENTIFIERS_KEY    = @"BGTaskSchedulerPermittedIdentifiers";
 
+static BOOL hasRegisteredAppRefreshTask = NO;
+
 @implementation TSBackgroundFetch {
     BOOL enabled;
     
@@ -74,6 +76,12 @@ static NSString *const PERMITTED_IDENTIFIERS_KEY    = @"BGTaskSchedulerPermitted
 
 - (void) registerAppRefreshTask {
     if (@available(iOS 13.0, *)) {
+        if (hasRegisteredAppRefreshTask) {
+            NSLog(@"[TSBackgroundFetch] ⚠️ Already registered. Skipping duplicate.");
+            return;
+        }
+        hasRegisteredAppRefreshTask = YES;
+        
         [TSBGAppRefreshSubscriber registerTaskScheduler];
         
         [[BGTaskScheduler sharedScheduler] registerForTaskWithIdentifier:BACKGROUND_REFRESH_TASK_ID usingQueue:nil launchHandler:^(BGTask* task) {
