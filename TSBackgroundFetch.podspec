@@ -19,6 +19,10 @@ Pod::Spec.new do |s|
   s.header_mappings_dir = 'ios/TSBackgroundFetch'
 
   s.source_files     = 'ios/TSBackgroundFetch/**/*.{h,m}'
+  s.exclude_files = [
+    'ios/TSBackgroundFetch/**/TSBackgroundFetchTests/**/*',
+    'ios/TSBackgroundFetch/**/Tests/**/*'
+  ]
 
   s.public_header_files = 'ios/TSBackgroundFetch/**/*.h'
 
