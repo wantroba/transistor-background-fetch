@@ -27,6 +27,12 @@ static NSMutableArray *_tasks;
 #pragma mark Class Methods
 
 +(void)registerForTaskWithIdentifier:(NSString*)identifier API_AVAILABLE(ios(13)) {
+
+#if TARGET_OS_EXTENSION
+    NSLog(@"[%@] Skipping BGTaskScheduler registration in extension: %@", TAG, identifier);
+    return;
+#endif
+
     _hasRegisteredProcessingTaskScheduler = YES;
         
     NSLog(@"[%@ registerForTaskWithIdentifier: %@", TAG, identifier);

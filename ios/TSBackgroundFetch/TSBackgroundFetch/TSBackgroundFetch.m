@@ -91,6 +91,12 @@ static NSString *const PERMITTED_IDENTIFIERS_KEY    = @"BGTaskSchedulerPermitted
         return;
     }
     hasRegistered = YES;
+
+#if TARGET_OS_EXTENSION
+    NSLog(@"[%@] Skipping BGTaskScheduler registration in extension", TAG);
+    return;
+#endif
+
     if (@available(iOS 13.0, *)) {
         [TSBGAppRefreshSubscriber registerTaskScheduler];
         
