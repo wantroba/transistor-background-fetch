@@ -13,7 +13,10 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT' }
   s.author           = { 'Transistor Software' => 'info@transistorsoft.com' }
 
-  s.source           = { :git => 'https://github.com/wantroba/transistor-background-fetch.git' }
+  s.source           = { :git => 'https://github.com/wantroba/transistor-background-fetch.git', :branch => 'master' }
+
+  s.module_name      = 'TSBackgroundFetch'
+  s.header_mappings_dir = 'ios/TSBackgroundFetch'
 
   s.source_files     = 'ios/TSBackgroundFetch/**/*.{h,m}'
 
@@ -24,5 +27,5 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'UIKit'
   s.weak_frameworks = 'BackgroundTasks'
-  s.static_framework = true 
+  s.static_framework = true
 end
