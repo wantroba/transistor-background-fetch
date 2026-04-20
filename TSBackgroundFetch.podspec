@@ -6,19 +6,22 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
-  s.name                = 'TSBackgroundFetch'
-  s.version             = '4.1.1'
-  s.vendored_frameworks = 'TSBackgroundFetch.xcframework'
-  s.documentation_url   = 'https://fetch.transistorsoft.com'
-  s.frameworks          = 'UIKit'
-  s.weak_frameworks     = 'BackgroundTasks'
-  s.source              = { :http => 'https://github.com/transistorsoft/transistor-background-fetch/releases/download/4.1.1/TSBackgroundFetch.xcframework.zip' }
-  s.homepage            = 'https://github.com/transistorsoft/transistor-background-fetch'
-  s.license             = { :type => 'MIT', :file => 'LICENSE' }
-  s.summary             = 'Background fetch & periodic background tasks for iOS.'
-  s.description         = 'Lightweight, open-source Background Fetch that wraps BGTaskScheduler / background fetch to deliver reliable periodic callbacks.'
-  s.author              = { 'Transistor Software' => 'info@transistorsoft.com' }
+  s.name             = 'TSBackgroundFetch'
+  s.version          = '4.1.1'
+  s.summary          = 'Background fetch & periodic background tasks for iOS.'
+  s.homepage         = 'https://github.com/wantroba/transistor-background-fetch'
+  s.license          = { :type => 'MIT' }
+  s.author           = { 'Transistor Software' => 'info@transistorsoft.com' }
+
+  s.source           = { :git => 'https://github.com/wantroba/transistor-background-fetch.git' }
+
+  s.source_files     = 'ios/TSBackgroundFetch/**/*.{h,m}'
+
+  s.public_header_files = 'ios/TSBackgroundFetch/**/*.h'
+
   s.ios.deployment_target = '12.0'
-  s.static_framework    = true
-  s.pod_target_xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
+  s.requires_arc = true
+
+  s.frameworks = 'UIKit'
+  s.weak_frameworks = 'BackgroundTasks'
 end
