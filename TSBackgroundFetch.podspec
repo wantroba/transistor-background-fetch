@@ -24,4 +24,5 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'UIKit'
   s.weak_frameworks = 'BackgroundTasks'
+  s.static_framework = true 
 end
