@@ -19,6 +19,7 @@ static NSString *const PERMITTED_IDENTIFIERS_KEY    = @"BGTaskSchedulerPermitted
 @implementation TSBackgroundFetch {
     BOOL enabled;
     BOOL launched;
+    static BOOL hasRegistered = NO;
 
     NSTimeInterval minimumFetchInterval;
     id bgAppRefreshTask;
@@ -85,6 +86,11 @@ static NSString *const PERMITTED_IDENTIFIERS_KEY    = @"BGTaskSchedulerPermitted
 
 
 - (void) registerAppRefreshTask {
+    if (hasRegistered) {
+        NSLog(@"skip duplicate");
+        return;
+    }
+    hasRegistered = YES;
     if (@available(iOS 13.0, *)) {
         [TSBGAppRefreshSubscriber registerTaskScheduler];
         
